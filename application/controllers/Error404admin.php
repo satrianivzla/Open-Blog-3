@@ -45,7 +45,7 @@ class error404admin extends CI_Controller {
 		$this->template->set('active_link', 'dashboard');
 
 		// build it and they will come.
-        $this->load->view('admin/error/error404');
+        $this->load->view('admin/error/error404', $data);
     }
 }
 ?>
