@@ -1,25 +1,21 @@
 <!DOCTYPE html>
-<html  lang="<?= $this->session->language_abbr ?>">
-<head>
+<html lang="<?php echo $this->session->language_abbr; ?>">
+	<head>
+	<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<![endif]-->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title><?= $template['title'] ?></title>
+    <meta name="robots" content="NoIndex, NoFollow">	
+    <!-- The Admin panel don't need to be available for google spider  -->
+    <title><?php echo $template['title']; ?></title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/dataTables.bootstrap.min.css"); ?>">
+   
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -27,7 +23,7 @@
     <![endif]-->
 
     <?php echo $template['metadata']; ?>
-
+    <link rel="icon" href="../../favicon.ico">
   </head>
 
   <body>
@@ -44,8 +40,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?php echo site_url('auth/logout') ?>"><b>Log Out</b></a></li>
             <li><a href="http://open-blog.org" target="_blank">Help</a></li>
+            <li><a href="<?php echo site_url('auth/edit_user/' . $this->ion_auth->get_user_id()) ?>"><b>Edit Profile</b></a></li>			              
+            <li><a href="<?php echo site_url('auth/logout') ?>"><b>Log Out</b></a></li>           
           </ul>
         </div>
       </div>
@@ -62,12 +59,19 @@
           <?php echo $template['partials']['flashdata']; ?>
 
             <?php echo $template['body']; ?>
-          
+          	<hr />
+            <div class="well text-right"><small>  &copy; Copyright <?php echo date('Y'); ?> | Powered by <a href="http://open-blog.org" target="_blank">Open Blog</a></small></div>
 
         </div>
         </div>
       </div>
     </div>
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/js/jquery.dataTables.min.js"); ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/js/dataTables.bootstrap.min.js"); ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/js/datatables.js"); ?>"></script>  
   </body>
 </html>
 
