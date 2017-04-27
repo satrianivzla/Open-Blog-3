@@ -60,7 +60,7 @@
 
             <?php echo $template['body']; ?>
           	<hr />
-            <div class="well text-right"><small>  &copy; Copyright <?php echo date('Y'); ?> | Powered by <a href="http://open-blog.org" target="_blank">Open Blog</a></small></div>
+            <div class="well text-right"><small>  &copy; Copyright 2010 - <?php echo date('Y'); ?> | Powered by <a href="http://open-blog.org" target="_blank">Open Blog</a></small></div>
 
         </div>
         </div>
