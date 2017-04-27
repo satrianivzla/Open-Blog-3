@@ -43,7 +43,7 @@ class Admin extends OB_AdminController {
 		$this->load->language('ion_auth');
 
 		// set form validation error default
-		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>', '</div>');
 
 	}
 
