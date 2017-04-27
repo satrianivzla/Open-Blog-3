@@ -63,7 +63,7 @@ $route['archive/(:any)']					= 'blog/archive/$1';
 $route['category/(:any)'] 					= 'blog/category/$1';
 
 // default stuff
-$route['404_override'] = '';
+$route['404_override'] = 'error404admin';
 $route['translate_uri_dashes'] = FALSE;
 
 /*
