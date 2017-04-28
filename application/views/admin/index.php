@@ -59,7 +59,10 @@
                     <h3 class="panel-title"><?php echo $item->title; ?> <span class="pull-right"><?php echo $item->date_posted; ?></span></h3>
                 </div>
                 <div class="panel-body">
-                    <?php echo $item->excerpt; ?> <br><span class="pull-right"><a href="http://open-blog.org" target="_blank"></a><?php echo lang('openblog_message'); ?></span>
+				   
+                    <?php echo $item->excerpt; ?> 
+					 <br /> &nbsp; <br />
+					 <span class="pull-right"><a href="http://open-blog.org" class="btn btn-primary" target="_blank"><?php echo lang('openblog_message'); ?></a></span>
                 </div>
             </div>
             <?php endforeach ?>
