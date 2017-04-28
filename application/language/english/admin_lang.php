@@ -11,8 +11,9 @@ $lang['blog']								= 'Blog';
 
 // Error Messages
 $lang['error_title_important']		    = "¡Important!";
-$lang['error_no_categories']                = "There is no Categories added yet.";
 $lang['error_general_message']              = 'You must check and fix form error messages to allow you to continue.';
+$lang['error_no_categories']                = "There is no Categories added yet.";
+$lang['error_no_openblog_news']             = "There is no Open Blog News Found.";
 
 // Datatables titles
 
@@ -23,6 +24,15 @@ $lang['title_delete']                       = 'Delete';
 $lang['title_name']                         = 'Name'; 
 $lang['title_slug']                         = 'URL (slug)';
 $lang['title_description']                  = 'Description';
+
+// Dashboard
+$lang['dashboard_title']                    = 'Dashboard main page'; 
+$lang['dashboard_box_published']            = 'Published Posts'; 
+$lang['dashboard_box_comments']             = 'Active Comments'; 
+$lang['dashboard_box_moderation']           = 'Comments Awaiting Moderation'; 
+$lang['dashboard_box_subscriptions']        = 'Subscriptions to New Content'; 
+$lang['openblog_news_title']                = 'Open Blog News'; 
+$lang['openblog_message']                   = 'Visit the Open Blog Website for more Help and News.'; 
 
 // Settings
 $lang['settings_help_txt']				= "Settings allow you to change how your website performs certain actions and basic information like your site's name.";
