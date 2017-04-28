@@ -6,7 +6,13 @@ Open Blog is a free and open source blogging platform built using the CodeIgnite
 
 # Notice
 
-This is the Development Repository for OB3.  Now in Beta!
+This is a copy of the Development Repository for OB3 with my updates plus: 
+100% Valid HTML 
+DataTaables
+Bootstrap Validation with messages 
+Tested under CI 3.1.4
+
+Remember OB3 now in Beta!
 
 
 ## Translations
