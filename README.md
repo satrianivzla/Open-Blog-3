@@ -14,7 +14,9 @@ This is a copy of the Development Repository for OB3 with my updates plus:
 
 Remember OB3 now in Beta!
 
-Images main index with datatables https://github.com/satrianivzla/Open-Blog-3/blob/master/images/languages.jpg
+Images
+-  main index with datatables
+![main index with datatables](https://github.com/satrianivzla/Open-Blog-3/blob/master/images/languages.jpg)
 
 
 ## Translations
