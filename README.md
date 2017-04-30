@@ -14,7 +14,7 @@ This is a copy of the Development Repository for OB3 with my updates plus:
 
 Remember OB3 now in Beta!
 
-[[https://github.com/satrianivzla/Open-Blog-3/blog/master/images/languagesjpg|alt=languages]]
+[[https://github.com/satrianivzla/Open-Blog-3/blog/master/images/languages.jpg|alt=languages]]
 
 
 ## Translations
