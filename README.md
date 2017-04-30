@@ -14,7 +14,7 @@ This is a copy of the Development Repository for OB3 with my updates plus:
 
 Remember OB3 now in Beta!
 
-[[images/languages.jpg|alt=languages]]
+[images/languages.jpg|alt=languages]
 
 
 ## Translations
