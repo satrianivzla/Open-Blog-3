@@ -14,6 +14,9 @@
 *
 */
 
+$lang['error_title_important']		= "¡Important!";
+$lang['error_general_message']      = 'You must check and fix form error messages to allow you to continue.';
+
 // Account Creation
 $lang['account_creation_successful']            = 'Account Successfully Created';
 $lang['account_creation_unsuccessful']          = 'Unable to Create Account';
@@ -24,6 +27,9 @@ $lang['account_creation_invalid_default_group'] = 'Invalid default group name se
 
 
 // Password
+$lang['password_change_title']               = 'Change Password';
+$lang['password_change_btn']                 = 'Change Password';
+$lang['password_change_message']             = "You'll be required to log in with your new password";
 $lang['password_change_successful']          = 'Password Successfully Changed';
 $lang['password_change_unsuccessful']        = 'Unable to Change Password';
 $lang['forgot_password_successful']          = 'Password Reset Email Sent';

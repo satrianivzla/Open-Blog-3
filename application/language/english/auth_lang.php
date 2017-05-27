@@ -1,4 +1,5 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
 * Name:  Auth Lang - English
 *
@@ -19,6 +20,24 @@
 
 // Errors
 $lang['error_csrf'] = 'This form post did not pass our security checks.';
+
+$lang['users_form_first_name'] = 'First Name';
+$lang['users_form_first_name_help']					= "Write down users's first name";
+$lang['users_form_last_name']						= "Last Name";
+$lang['users_form_last_name_help']					= "Write down users's Last Name";
+$lang['users_form_identity']					    = "Company Name";
+$lang['users_form_identity_help']					= "Write down users's Company Name  (Optional)";
+$lang['users_form_company']					        = "Company Name";
+$lang['users_form_company_help']					= "Write down users's Company Name";
+$lang['users_form_email']                           = "e-mail account";
+$lang['users_form_email_help']                      = "User e-mail account";
+$lang['users_form_phone']                           = "User phone";
+$lang['users_form_phone_help']                      = "Write down user phone (Optional)";
+$lang['users_form_password']                        = "Password";
+$lang['users_form_password_help']                   = "Write down a password";
+$lang['users_form_password_confirm']                = "Repeat Password";
+$lang['users_form_password_confirm_help']           = "Write down again password";
+
 
 // Login
 $lang['login_heading']         = 'Login';
@@ -84,6 +103,7 @@ $lang['edit_user_phone_label']                       = 'Phone:';
 $lang['edit_user_password_label']                    = 'Password: (if changing password)';
 $lang['edit_user_password_confirm_label']            = 'Confirm Password: (if changing password)';
 $lang['edit_user_groups_heading']                    = 'Member of groups';
+$lang['edit_user_groups_helptext']                   = "Add or remove a user from a group by checking or unchecking the corrosponding box.";
 $lang['edit_user_submit_btn']                        = 'Save User';
 $lang['edit_user_validation_fname_label']            = 'First Name';
 $lang['edit_user_validation_lname_label']            = 'Last Name';
@@ -93,6 +113,7 @@ $lang['edit_user_validation_company_label']          = 'Company Name';
 $lang['edit_user_validation_groups_label']           = 'Groups';
 $lang['edit_user_validation_password_label']         = 'Password';
 $lang['edit_user_validation_password_confirm_label'] = 'Password Confirmation';
+
 
 // Create Group
 $lang['create_group_title']                  = 'Create Group';
@@ -118,6 +139,7 @@ $lang['edit_group_validation_desc_label']  = 'Description';
 // Change Password
 $lang['change_password_heading']                               = 'Change Password';
 $lang['change_password_old_password_label']                    = 'Old Password:';
+$lang['change_password_confirm_password_label']                = 'Confirm Password:';
 $lang['change_password_new_password_label']                    = 'New Password (at least %s characters long):';
 $lang['change_password_new_password_confirm_label']            = 'Confirm New Password:';
 $lang['change_password_submit_btn']                            = 'Change';
@@ -156,7 +178,7 @@ $lang['remove_group_heading']				= 'Remove Group';
 $lang['permissions_label']					= 'Permissions';
 $lang['permissions_desc']					= 'Choose the actions this group may perform.';
 $lang['admin_perm_notice']					= 'The Admin group has access to all areas of the website. Administrator permissions can not be changed.';
-$lang['index_create_perm_link']				= 'New Permission';
+$lang['index_create_perm_link']				= 'Add New Permission';
 $lang['permissions_name_label']				= 'Name';
 $lang['edit_perm_heading']					= 'Edit Permission';
 $lang['edit_perm_subheading']				= 'Please Edit the permission information below.';
@@ -190,12 +212,7 @@ $lang['updates_perms_desc']					= 'Is this group permitted to administer updates
 $lang['perm_already_exists']					= 'Permission already exists.';
 
 
-
-
-
-
-
-
+ 
 
 
 

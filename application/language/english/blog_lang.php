@@ -1,4 +1,5 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 // headers
 $lang['recent_posts']					= "Recent Posts";
@@ -26,6 +27,8 @@ $lang['submit']							= "Submit";
 
 
 // Comments
+$lang['comments_nicname']				= "Your Name";
+$lang['comments_email']					= "Your Email";
 $lang['comments_disabled']				= "Comments are disabled.";
 $lang['comments_disabled_post']			= "Comments are disabled for this post.";
 $lang['comments']						= "Comments";
@@ -37,7 +40,7 @@ $lang['btn_approve_comment']			= "Approve Comment"; // Approve modded comment
 $lang['btn_remove_comment']				= "Remove Comment"; // Deletes the comment
 $lang['btn_hide_comment']				= "Hide Comment";  // Hides Comment, provides link to 'view anyway'
 $lang['btn_flag_comment']				= "Flag Comment";  // flag as inappropriate, unhelpful, or SPAM
-$lang['comment_help_text']				= "Note: No HTML";
+$lang['comment_help_text']				= "<b>Note</b>: No HTML";
 
 
 
