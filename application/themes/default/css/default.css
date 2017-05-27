@@ -1,13 +1,14 @@
-
-		/* move special fonts to HTML head for better performance */
+/* move special fonts to HTML head for better performance */
+/*
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,600,700');
-
+*/
 
 /* custom template */
 html, body {
    height: 100%;
    font-family:'Open Sans',arial,sans-serif;
 }
+
 
 a {
   color:#222222;
@@ -41,7 +42,8 @@ a {
 }
 
 .box {
-      bottom: 0; /* increase for footer use */
+    background-image:url('http://localhost/ci-Open-Blog3/application/themes/default/img/bg_suburb.jpg');
+ 	bottom: 0; /* increase for footer use */
     left: 0;
     position: absolute;
     right: 0;
@@ -163,4 +165,40 @@ img {
     max-width: 100%;
    }
 
-   
+/*
+|--------------------------------------------------------------------------
+| UItoTop jQuery Plugin 1.2
+| http://www.mattvarone.com/web-design/uitotop-jquery-plugin/
+|--------------------------------------------------------------------------
+*/
+
+#toTop {
+	display:none;
+	text-decoration:none;
+	position:fixed;
+	bottom:10px;
+	right:10px;
+	overflow:hidden;
+	width:51px;
+	height:51px;
+	border:none;
+	text-indent:100%;
+	background:url('http://localhost/ci-Open-Blog3/application/themes/default/img/ui.totop.png') no-repeat left top;
+}
+
+#toTopHover {
+	background:url('http://localhost/ci-Open-Blog3/application/themes/default/img/ui.totop.png') no-repeat left -51px;
+	width:51px;
+	height:51px;
+	display:block;
+	overflow:hidden;
+	float:left;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter:alpha(opacity=0);
+}
+
+#toTop:active, #toTop:focus {
+	outline:none;
+}   
+
