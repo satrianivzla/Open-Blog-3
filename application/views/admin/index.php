@@ -1,3 +1,22 @@
+<?php 
+ /**
+ * Dashboard main page
+ * 
+ * @access  public
+ * @author  Simon Montaño
+ * @version 3.0
+ * Last Updated: May 04, 2017
+*/
+?>
+
+         <div class="btn-group btn-breadcrumb">
+            <a href="<?php echo site_url('admin'); ?>" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+            <a href="<?php echo site_url('admin'); ?>" class="btn btn-default"><?php echo lang('dashboard_page_name'); ?></a>
+			<a href="#" class="btn btn-primary"><?php echo lang('dashboard_index_page'); ?></a> 
+         </div>		 
+		 <br /> &nbsp; <br /> 
+
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><?php echo lang('dashboard_title'); ?></h3>
