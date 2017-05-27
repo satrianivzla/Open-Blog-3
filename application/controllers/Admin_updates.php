@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Admin Updates
@@ -48,7 +49,7 @@ class Admin_updates extends OB_AdminController {
 		$this->load->language('auth', $this->session->language);
 		$this->load->language('ion_auth', $this->session->language);
 
-		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 	}
 
 	/**
@@ -63,7 +64,7 @@ class Admin_updates extends OB_AdminController {
 	public function index()
 	{
 		$data['update_avail'] = $this->Admin_updates_m->check_for_update();
-
+        $data['datatables'] = "0"; // DISABLED DATATABLES
 		$this->template->build('admin/updates/index', $data);
 	}
 

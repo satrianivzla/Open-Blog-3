@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Admin_cats
@@ -45,6 +46,8 @@ class Admin_cats extends OB_AdminController
 		$this->load->model('Admin_cats_m');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		// REMEMBER THAT YOU HAVE TO UPDATE THIS ERROR MESSAGE IN YOUR LANGUAGE FILE
+		$this->form_validation->set_message('is_unique', lang('category_unique_error_message') );
 		$this->load->language('auth', $this->session->language);
 		$this->load->language('ion_auth', $this->session->language);
 
@@ -65,7 +68,9 @@ class Admin_cats extends OB_AdminController
 	{
 		// get the categories
 		$data['cats'] = $this->Admin_cats_m->get_cats();
-
+        $data['datatables'] = "1"; // ENABLED DATATABLES
+		$data['section'] = lang('categories_section_name');
+        $data['title'] = lang('categories_index_page');
 		//build it
 		$this->template->build('admin/cats/index', $data);
 	}
@@ -84,12 +89,17 @@ class Admin_cats extends OB_AdminController
      */
 	public function add_cat()
 	{
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+		$data['section'] = lang('categories_section_name');
+        $data['title'] = lang('categories_add_new');		
+		
 		// do we have a form submit?
 		if ($this->input->post())
 		{
-			// yup, set rules
-			$this->form_validation->set_rules('name', lang('cat_form_name'), 'required');
-			$this->form_validation->set_rules('url_name', lang('cat_form_url'), 'required');
+			// yup, set rules // REMEMBER THIS - THE UNIQUE VALIDATION MUST BE UDAPTED DUE TABLE NAME
+			// http://tutsnare.com/custom-form-validation-in-codeigniter/
+			$this->form_validation->set_rules('name', lang('cat_form_name'), 'required|is_unique[blog_categories.name]');
+			$this->form_validation->set_rules('url_name', lang('cat_form_url_slug'), 'required');
 			$this->form_validation->set_rules('description', lang('cat_form_desc'), 'required');
 		}
 
@@ -105,10 +115,10 @@ class Admin_cats extends OB_AdminController
         	}
         	// failed
         	$data['message'] = lang('cat_added_fail_resp');
-			$this->template->build('admin/cats/add_cat'); 
+			$this->template->build('admin/cats/add_cat', $data); 
         }
         // no form submit, show the form
-        $this->template->build('admin/cats/add_cat');       
+        $this->template->build('admin/cats/add_cat', $data);       
 	}
 
 	/**
@@ -129,6 +139,10 @@ class Admin_cats extends OB_AdminController
 		// get the category we're editing
 		$data['cat'] = $this->Admin_cats_m->get_cat($id);
 
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+		$data['section'] = lang('categories_section_name');
+        $data['title'] = lang('categories_edit_title');		
+		
 		// did we have a form submit?
 		if ($this->input->post())
 		{

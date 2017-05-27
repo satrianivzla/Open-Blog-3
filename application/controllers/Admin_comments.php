@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Admin Comments
@@ -52,7 +53,7 @@ class Admin_comments extends OB_AdminController
 		$this->load->language('ion_auth', $this->session->language);
 
 		// validation errors
-		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 
 
 	}
@@ -68,6 +69,12 @@ class Admin_comments extends OB_AdminController
      */
 	public function index()
 	{
+		
+		$data['datatables'] = "1"; // ENABLED DATATABLES
+		$data['section'] = lang('comments_section_name');
+        $data['title'] = lang('comments_index_page');
+		
+		
 		// get active comments
 		$data['active_comments'] = $this->Admin_comments_m->get_comments();
 
@@ -89,6 +96,10 @@ class Admin_comments extends OB_AdminController
      */
 	public function edit_comment($id)
 	{
+		
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+		$data['section'] = lang('comments_section_name');
+        $data['title'] = lang('comments_edit_page');		
 		// get the comment info being edited
 		$data['comment'] = $this->Admin_comments_m->get_comment($id);
 

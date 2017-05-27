@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Admin Comments
@@ -49,7 +50,7 @@ class Admin_navigation extends OB_AdminController {
 		$this->load->language('ion_auth', $this->session->language);
 
 		// form validation
-		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 	}
 
 	/**
@@ -68,6 +69,10 @@ class Admin_navigation extends OB_AdminController {
 		$this->template->append_css('jquery-ui.structure.min.css');
 		$this->template->append_js('jquery-ui.min.js');
 
+		$data['datatables'] = "1"; // ENABLED DATATABLES
+		$data['section'] = lang('navigation_section_name');
+        $data['title'] = lang('navigation_index_page');	
+		
 		// get a list of the nav items
 		$data['navs'] = $this->Admin_navs_m->get_navs();
 
@@ -91,6 +96,10 @@ class Admin_navigation extends OB_AdminController {
 	{	
 		// default empty array
 		$data = [];
+		
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+		$data['section'] = lang('navigation_section_name');
+        $data['title'] = lang('navigation_add_page');			
 
 		// get page slugs...
 		$data['page_slugs'] = $this->Admin_navs_m->get_page_slugs();
@@ -151,6 +160,11 @@ class Admin_navigation extends OB_AdminController {
      */
 	public function edit($id)
 	{
+		
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+		$data['section'] = lang('navigation_section_name');
+        $data['title'] = lang('navigation_edit_page');
+		
 		// get nav items
 		$data['nav'] = $this->Admin_navs_m->get_nav($id);
 

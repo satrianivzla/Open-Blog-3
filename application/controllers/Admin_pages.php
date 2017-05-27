@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Admin Pages
@@ -49,7 +50,7 @@ class Admin_pages extends OB_AdminController {
 		$this->load->language('auth', $this->session->language);
 		$this->load->language('ion_auth', $this->session->language);
 
-		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 
 
 	}
@@ -65,6 +66,9 @@ class Admin_pages extends OB_AdminController {
      */
 	public function index()
 	{
+		$data['datatables'] = "1"; // ENABLED DATATABLES
+	    $data['section'] = lang('pages_section_name');
+        $data['title'] = lang('pages_index_page');	
 		// get all pages
 		$data['pages'] = $this->Admin_pages_m->get_pages();
 
@@ -158,11 +162,17 @@ class Admin_pages extends OB_AdminController {
         	}
         	// failed
         	$data['message'] = lang('page_added_fail_resp');
+			$data['datatables'] = "0"; // DISABLED DATATABLES
+			$data['section'] = lang('pages_section_name');
+            $data['title'] = lang('pages_add_page');	
 			$this->template->build('admin/pages/add_page'); 
         }
 
         // not submit attempt, build the page...
-        $this->template->build('admin/pages/add_page');       
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+	    $data['section'] = lang('pages_section_name');
+        $data['title'] = lang('pages_add_page');			
+        $this->template->build('admin/pages/add_page', $data);       
 	}
 
 
@@ -259,8 +269,14 @@ class Admin_pages extends OB_AdminController {
         	}
         	// failed
         	$data['message'] = lang('page_update_fail_resp');
+			$data['datatables'] = "0"; // DISABLED DATATABLES
+	        $data['section'] = lang('pages_section_name');
+            $data['title'] = lang('pages_edit_page');				
 			$this->template->build('admin/pages/edit_page', $data); 
         }
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+	    $data['section'] = lang('pages_section_name');
+        $data['title'] = lang('pages_edit_page');			
         $this->template->build('admin/pages/edit_page', $data);    
 
 	}

@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Admin Social
@@ -43,7 +44,7 @@ class Admin_social extends OB_AdminController {
 		$this->load->language('ion_auth');
 
 		// set form validation error default
-		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 		
 		// does the user have permission to 
 		// view/use this method?
@@ -70,6 +71,10 @@ class Admin_social extends OB_AdminController {
      */
 	public function index()
 	{
+		
+		$data['datatables'] = "1"; // ENABLED DATATABLES
+		$data['section'] = lang('social_section_name');
+        $data['title'] = lang('social_index_page');
 		// get social links
 		$data['social'] = $this->Admin_social_m->get_social_links();
 
@@ -109,10 +114,17 @@ class Admin_social extends OB_AdminController {
         	}
         	// failed
         	$data['message'] = lang('social_added_fail_resp');
-			$this->template->build('admin/social/add'); 
+			$data['datatables'] = "0"; // DISABLED DATATABLES
+		    $data['section'] = lang('social_section_name');
+            $data['title'] = lang('social_add_page');			
+			
+			$this->template->build('admin/social/add',$data); 
         }
         // no form submit, show the form    
-		$this->template->build('admin/social/add');
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+		$data['section'] = lang('social_section_name');
+        $data['title'] = lang('social_add_page');		
+		$this->template->build('admin/social/add',$data);
 	}
 
 	/**
@@ -126,6 +138,11 @@ class Admin_social extends OB_AdminController {
      */
 	public function edit($id)
 	{
+		
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+		$data['section'] = lang('social_section_name');
+        $data['title'] = lang('social_edit_page');	
+			
 		// get the category we're editing
 		$data['social'] = $this->Admin_social_m->get_social_link($id);
 

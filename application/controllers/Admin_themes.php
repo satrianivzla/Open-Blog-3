@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Admin Themes
@@ -52,7 +53,7 @@ class Admin_themes extends OB_AdminController {
 		$this->load->language('auth', $this->session->language);
 		$this->load->language('ion_auth', $this->session->language);
 
-		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 
 
 	}
@@ -68,6 +69,9 @@ class Admin_themes extends OB_AdminController {
      */
 	public function index()
 	{
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+		$data['section'] = lang('themes_section_name');
+        $data['title'] = lang('themes_index_page');		
 		$data['themes'] = $this->Admin_themes_m->get_themes();
 
 		$this->template->build('admin/themes/index', $data);

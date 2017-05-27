@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends OB_Controller {
 
@@ -10,7 +11,7 @@ class Auth extends OB_Controller {
 		$this->load->helper(array('url','language'));
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
-
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 		$this->lang->load('auth', $this->session->language);
 	}
 
@@ -73,7 +74,7 @@ class Auth extends OB_Controller {
 				$this->session->set_flashdata('error', validation_errors());
 			}
 			
-
+         
 			$this->data['identity'] = array('name' => 'identity',
 				'id'    => 'identity',
 				'type'  => 'text',

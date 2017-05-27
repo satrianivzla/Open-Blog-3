@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Admin Social
@@ -43,7 +44,7 @@ class Admin_lang extends OB_AdminController {
 		$this->load->language('ion_auth', $this->session->language);
 
 		// set form validation error default
-		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 		
 		// does the user have permission to 
 		// view/use this method?
@@ -72,7 +73,9 @@ class Admin_lang extends OB_AdminController {
 	{
 		// get social links
 		$data['langs'] = $this->Admin_lang_m->get_links();
-
+        $data['datatables'] = "1"; // ENABLED DATATABLES
+		$data['section'] = lang('languages_section_name');
+        $data['title'] = lang('languages_index_page');
 		// build it and they will come.
 		$this->template->build('admin/lang/index', $data);
 	}

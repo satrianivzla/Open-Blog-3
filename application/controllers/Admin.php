@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Admin
@@ -43,7 +44,7 @@ class Admin extends OB_AdminController {
 		$this->load->language('ion_auth');
 
 		// set form validation error default
-		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 
 	}
 
@@ -68,6 +69,11 @@ class Admin extends OB_AdminController {
 		}
 
 		// get info for the dashboard
+		
+ 
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+		$data['section'] = lang('dashboard_page_name');
+        $data['title']   = lang('dashboard_title');
 		$data = $this->Admin_m->get_dashboard();
 
 		// set active_link so we know what to 
@@ -120,6 +126,7 @@ class Admin extends OB_AdminController {
 			if ($this->form_validation->run() === FALSE)
             {
             	// get the list of settings
+				$data['datatables'] = "0"; // DISABLED DATATABLES
 				$data = $this->Admin_m->get_settings_list();
                 $this->template->build('admin/settings/index', $data);
             }
@@ -134,7 +141,12 @@ class Admin extends OB_AdminController {
             else
             {
             	$data['message'] = lang('settings_update_failed');
+			
             	// get the list of settings
+				$this->data['datatables'] = "0"; // DISABLED DATATABLES
+				$this->data['section'] = lang('settings_section_name');
+                $this->data['title'] = lang('settings_index_page');	
+				
 				$data = $this->Admin_m->get_settings_list();
 				$this->template->build('admin/settings/index', $data);
             }
@@ -142,8 +154,11 @@ class Admin extends OB_AdminController {
 		else
 		{
 			// get the list of settings
+			$this->data['datatables'] = "0"; // DISABLED DATATABLES
+			$this->data['section'] = lang('settings_section_name');
+            $this->data['title'] = lang('settings_index_page');
 			$data = $this->Admin_m->get_settings_list();
-
+           
 			$this->template->build('admin/settings/index', $data);
 		}
 	}

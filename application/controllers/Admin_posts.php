@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Admin Posts
@@ -49,7 +50,7 @@ class Admin_posts extends OB_AdminController {
 		$this->load->language('auth', $this->session->language);
 		$this->load->language('ion_auth', $this->session->language);
 
-		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 
 
 	}
@@ -65,6 +66,10 @@ class Admin_posts extends OB_AdminController {
      */
 	public function index()
 	{
+		
+		$data['datatables'] = "1"; // ENABLED DATATABLES
+	    $data['section'] = lang('posts_section_name');
+        $data['title'] = lang('posts_index_page');		
 		$data['posts'] = $this->Admin_posts_m->get_posts();
 
 		$this->template->build('admin/posts/index', $data);
@@ -169,8 +174,15 @@ class Admin_posts extends OB_AdminController {
         	}
         	// failed
         	$data['message'] = lang('post_added_fail_resp');
+			$data['datatables'] = "0"; // DISABLED DATATABLES
+	        $data['section'] = lang('posts_section_name');
+            $data['title'] = lang('posts_add_page');				
 			$this->template->build('admin/posts/add_post', $data); 
         }
+		
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+	    $data['section'] = lang('posts_section_name');
+        $data['title'] = lang('posts_add_page');			
         $this->template->build('admin/posts/add_post', $data);       
 	}
 
@@ -279,8 +291,14 @@ class Admin_posts extends OB_AdminController {
         	}
         	// failed
         	$data['message'] = lang('post_update_fail_resp');
+			$data['datatables'] = "0"; // DISABLED DATATABLES
+	        $data['section'] = lang('posts_section_name');
+            $data['title'] = lang('posts_edit_page');			
 			$this->template->build('posts/edit_post', $data); 
         }
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+	    $data['section'] = lang('posts_section_name');
+        $data['title'] = lang('posts_edit_page');		
         $this->template->build('admin/posts/edit_post', $data);    
 
 	}

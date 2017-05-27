@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Blog extends OB_Controller {
 
@@ -227,7 +228,7 @@ class Blog extends OB_Controller {
 		
 		// pretty for Bootstrap 3
 		// TODO: switching for Semantic UI
-		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 
 		// run it!  did it pass validation?
 		if ($this->form_validation->run() == TRUE)
@@ -332,7 +333,6 @@ class Blog extends OB_Controller {
 		// no errors.  Winner, winner, chicken dinner.
 		return true;
 	}
-
 
 
 

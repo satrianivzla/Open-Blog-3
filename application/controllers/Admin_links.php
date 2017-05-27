@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Admin Links
@@ -50,7 +51,7 @@ class Admin_links extends OB_AdminController {
 		$this->load->language('ion_auth', $this->session->language);
 
 		// set validation errors
-		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 	}
 
 	/**
@@ -64,6 +65,11 @@ class Admin_links extends OB_AdminController {
      */
 	public function index()
 	{
+		
+		$data['datatables'] = "1"; // ENABLED DATATABLES
+		$data['section'] = lang('links_section_name');
+        $data['title'] = lang('links_index_page');
+		
 		// get the links
 		$data['links'] = $this->Admin_links_m->get_links();
 
@@ -108,11 +114,17 @@ class Admin_links extends OB_AdminController {
         	}
         	// failed
         	$data['message'] = lang('link_added_fail_resp');
-			$this->template->build('admin/links/add_link'); 
+			$data['datatables'] = "0"; // DISABLED DATATABLES
+			$data['section'] = lang('links_section_name');
+            $data['title'] = lang('links_add_page');
+			$this->template->build('admin/links/add_link', $data); 
         }
 
         // no submit attempt, build page
-        $this->template->build('admin/links/add_link');       
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+		$data['section'] = lang('links_section_name');
+        $data['title'] = lang('links_add_page');		
+        $this->template->build('admin/links/add_link', $data);       
 	}
 
 	/**
@@ -157,10 +169,17 @@ class Admin_links extends OB_AdminController {
         	}
         	// failed
         	$data['message'] = lang('link_update_fail_resp');
+			$data['datatables'] = "0"; // DISABLED DATATABLES
+		    $data['section'] = lang('links_section_name');
+            $data['title'] = lang('links_edit_page');					
 			$this->template->build('admin/links/edit_link', $data); 
         }
 
         // no submit attempt, build form
+		$data['datatables'] = "0"; // DISABLED DATATABLES
+		$data['section'] = lang('links_section_name');
+        $data['title'] = lang('links_edit_page');		
+		
         $this->template->build('admin/links/edit_link', $data);    
 
 	}

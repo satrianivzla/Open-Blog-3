@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_users extends OB_AdminController {
 
@@ -30,7 +31,7 @@ class Admin_users extends OB_AdminController {
 		$this->load->language('auth', $this->session->language);
 		$this->load->language('ion_auth', $this->session->language);
 
-		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="help-block with-errors">', '</div>');
 	}
 
 	
@@ -64,6 +65,9 @@ class Admin_users extends OB_AdminController {
 			{
 				$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
+			$data['datatables'] = "1"; // ENABLED DATATABLES
+		    $data['section'] = lang('users_section_name');
+            $data['title'] = lang('users_index_page');
 			$this->template->build('admin/users/index', $data);
 		}
 
@@ -119,7 +123,7 @@ class Admin_users extends OB_AdminController {
 			// insert csrf check
 			$data['csrf'] = $this->_get_csrf_nonce();
 			$data['user'] = $this->ion_auth->user($id)->row_array();
-
+            $data['datatables'] = "0"; // DISABLED DATATABLES
 			$this->template->build('admin/users/deactivate_user', $data);
 		}
 		else
@@ -267,6 +271,9 @@ class Admin_users extends OB_AdminController {
                 'placeholder'	=> 'Confirm Password'
             );
 
+			$this->data['datatables'] = "0"; // DISABLED DATATABLES
+		    $this->data['section'] = lang('users_section_name');
+            $this->data['title'] = lang('users_add_page');			
             $this->template->build('admin/users/create_user', $this->data);
         }
     }
@@ -439,6 +446,9 @@ class Admin_users extends OB_AdminController {
 			'class' => 'form-control',
 			'placeholder'	=> 'Confirm Password'
 		);
+		$this->data['datatables'] = "0"; // DISABLED DATATABLES
+	    $this->data['section'] = lang('users_section_name');
+        $this->data['title'] = lang('users_edit_page');
 		$this->template->build('admin/users/edit_user', $this->data);
 	}
 
@@ -489,7 +499,9 @@ class Admin_users extends OB_AdminController {
 				'placeholder'	=> 'Group Description'
 			);
 
-
+            $this->data['datatables'] = "0"; // DISABLED DATATABLES
+			$this->data['section'] = lang('groups_section_name');
+            $this->data['title'] = lang('groups_add_page');
 			$this->template->build('admin/users/create_group', $this->data);
 		}
 	}
@@ -542,18 +554,28 @@ class Admin_users extends OB_AdminController {
 		// set the flash data error message if there is one
 		$data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-		$readonly = $this->config->item('admin_group', 'ion_auth') === $group->name ? 'readonly' : '';
-
-		$data['group_name'] = array(
-			'name'    	=> 'group_name',
-			'id'      	=> 'group_name',
-			'type'    	=> 'text',
-			'value'   	=> $this->form_validation->set_value('group_name', $group->name),
-			$readonly 	=> $readonly,
-			'class' 	=> "form-control",
-			'placeholder'	=> 'Group Description',
-
-		);
+		// $readonly = $this->config->item('admin_group', 'ion_auth') === $group->name;
+        $check =  $group->id;
+		if ($check == '1') {
+				$data['group_name'] = array(
+					'name'    	=> 'group_name',
+					'id'      	=> 'group_name',
+					'type'    	=> 'text',
+					'value'   	=> $this->form_validation->set_value('group_name', $group->name),
+					'readonly' 	=> 'readonly',
+					'class' 	=> "form-control",
+					'placeholder'	=> 'Group Description',
+				);			  
+		} else {
+				$data['group_name'] = array(
+					'name'    	=> 'group_name',
+					'id'      	=> 'group_name',
+					'type'    	=> 'text',
+					'value'   	=> $this->form_validation->set_value('group_name', $group->name),
+					'class' 	=> "form-control",
+					'placeholder'	=> 'Group Description',
+				);			
+        }
 		$data['group_description'] = array(
 			'name'  => 'group_description',
 			'id'    => 'group_description',
@@ -566,7 +588,10 @@ class Admin_users extends OB_AdminController {
 		$data['group_id'] = $group->id;
 
 		$data['group_perms'] = $this->Admin_m->get_group_perms($group->id);
-
+		
+        $data['datatables'] = "0"; // DISABLED DATATABLES   
+		$data['section'] = lang('groups_section_name');
+        $data['title'] = lang('groups_edit_page');				
 		$this->template->build('admin/users/edit_group', $data);
 	}
 
@@ -635,7 +660,9 @@ class Admin_users extends OB_AdminController {
 		);
 
 		$data['perm_id'] = $perm->id;
-
+        $data['datatables'] = "0"; // DISABLED DATATABLES
+		$data['section'] = lang('permission_section_name');
+        $data['title'] = lang('permission_edit_page');		
 		$this->template->build('admin/users/edit_perm', $data);
 	}
 
