@@ -1,32 +1,60 @@
+<?php 
+ /**
+ * Edit Languages
+ * 
+ * @access       public
+ * @author       Enliven Appications
+ * @version      3.0
+ * Last Updated  May 04, 2017
+ * used bootstrap panels, breadcrumbs and alerts; Changed way to show validation messages and also added some language variables 
+ * @author       Simon Montaño
+*/
+?>
+
+        <div class="btn-group btn-breadcrumb">
+            <a href="<?php echo site_url('admin'); ?>" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+            <a href="<?php echo site_url('admin_lang'); ?>" class="btn btn-default"><?php echo lang('languages_hdr'); ?></a>
+			<a href="#" class="btn btn-primary"><?php echo lang('index_edit_language'); ?></a> 
+         </div>		 
+		 <br /> &nbsp; <br /> 
+
 <div class="container">
-    <div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<?= validation_errors() ?>
+    <div class="row"> 
+		
+		<?php 
+		   if (validation_errors()) {  ?>
+			<div class="alert alert-danger alert-dismissable">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <strong><?php echo lang('error_title_important'); ?></strong> <br /> 
+			   <?php echo lang('error_general_message'); ?>
+ 			</div>
+         <?php } ?>
 
 			<?php if (isset($message)): ?>
 				<div class="alert alert-danger" role="alert">
-					<?= $message ?>
+					<?php echo $message; ?>
 				</div>
 			<?php endif ?>
+			
     		<div class="panel panel-default">
 			  	<div class="panel-heading">
-			    	<h3 class="panel-title"><?= lang('index_add_new_social');?></h3>
+			    	<h3 class="panel-title"><?php echo lang('index_add_new_social'); ?></h3>
 			 	</div>
 			  	<div class="panel-body">
-			    	<?= form_open(current_url());?>
-			    		<p><?= lang('add_social_subheading');?></p>
+			    	<?php echo form_open(current_url()); ?>
+			    	<div class="well"><?php echo lang('add_social_subheading'); ?></div>
                     <fieldset>
 			    	  	<div class="form-group">
-			    		    <?= form_input(['name'=> 'name', 'id' => 'name', 'class' => "form-control", 'placeholder' => lang('social_form_name'), 'value' => ($this->input->post('name'))?$this->input->post('name'):$social['name'] ] ) ?>
+			    		    <?php echo form_input(['name'=> 'name', 'id' => 'name', 'class' => "form-control", 'placeholder' => lang('social_form_name'), 'value' => ($this->input->post('name'))?$this->input->post('name'):$social['name'] ] ); ?>
 			    		</div>
 			    		<div class="form-group">
-			    			<?= form_input(['name'=> 'url', 'id' => 'url', 'class' => "form-control", 'placeholder' => lang('social_form_url'), 'value' => ($this->input->post('url'))?$this->input->post('url'):$social['url'] ] ) ?>
+			    			<?php echo form_input(['name'=> 'url', 'id' => 'url', 'class' => "form-control", 'placeholder' => lang('social_form_url'), 'value' => ($this->input->post('url'))?$this->input->post('url'):$social['url'] ] ); ?>
 			    		</div>
 			    		<div class="form-group">
-			    			<label><?= lang('social_form_active') ?></label>
-			    			<?= form_dropdown('enabled', ['0' => lang('no'), '1' => lang('yes')], ($this->input->post('enabled'))?$this->input->post('enabled'):$social['enabled'], 'class="form-control"') ?>
+			    			<label><?php echo lang('social_form_active') ?></label>
+			    			<?php echo form_dropdown('enabled', ['0' => lang('no'), '1' => lang('yes')], ($this->input->post('enabled'))?$this->input->post('enabled'):$social['enabled'], 'id="enabled", class="form-control"');  ?>
 			    		</div>
-			    		<input class="btn btn-lg btn-default btn-block" type="submit" value="<?php echo lang('save_social_btn');?>">
+			    		<input class="btn btn-lg btn-default btn-block" type="submit" value="<?php echo lang('save_social_btn'); ?>">
 			    	</fieldset>
 			      	</form>
 			    </div>
