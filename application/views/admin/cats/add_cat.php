@@ -1,4 +1,23 @@
-   <div class="row"> 
+<?php 
+ /**
+ * Add Category
+ * 
+ * @access       public
+ * @author       Enliven Appications
+ * @version      3.0
+ * Last Updated  May 04, 2017
+ * used bootstrap panels, breadcrumbs and alerts; Changed way to show validation messages and also added some language variables
+ * @author       Simon Montaño
+*/
+?>
+        <div class="btn-group btn-breadcrumb">
+            <a href="<?php echo site_url('admin'); ?>" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+            <a href="<?php echo site_url('admin_cats'); ?>" class="btn btn-default"><?php echo lang('categories_section_name'); ?></a> 
+            <a href="#" class="btn btn-primary"><?php echo lang('categories_add_new'); ?></a>
+         </div>		 
+		 <br /> &nbsp; <br />
+
+    <div class="row"> 
 	<div class="col-lg-12">
 		<?php 
 		   if (validation_errors()) {  ?>
@@ -21,7 +40,7 @@
 			 	</div>
 			  	<div class="panel-body">
 			    	<?php echo form_open(current_url());?>
-			    		<p><?php echo lang('add_cat_subheading'); ?></p>
+			    		<div class="well"><?php echo lang('add_cat_subheading'); ?></div>
 						<br />
                     <fieldset>
 			    	  	<div class="form-group<?php if (form_error('name')) { ?> has-error has-feedback <?php } ?>">
@@ -59,3 +78,4 @@
 			</div>
 		 </div>
 	</div>
+ 
