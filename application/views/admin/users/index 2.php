@@ -1,3 +1,22 @@
+<?php 
+ /**
+ * Add Category
+ * 
+ * @access       public
+ * @author       Enliven Appications
+ * @version      3.0
+ * Last Updated  May 04, 2017
+ * used bootstrap panels, breadcrumbs and alerts; Changed way to show validation messages and also added some language variables 
+ * @author       Simon Montaño
+*/
+?>
+         <div class="btn-group btn-breadcrumb">
+            <a href="<?php echo site_url('admin'); ?>" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+            <a href="<?php echo site_url('admin_users'); ?>" class="btn btn-default"><?php echo lang('users_section_name'); ?></a>
+			<a href="#" class="btn btn-primary"><?php echo lang('users_index_page'); ?></a> 
+         </div>		 
+		 <br /> &nbsp; <br /> 
+
 <h1><?php echo lang('index_heading');?></h1>
 <p><?php echo lang('index_subheading');?></p>
 
