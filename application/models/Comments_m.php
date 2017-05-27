@@ -149,14 +149,21 @@ class Comments_m extends CI_Model
      */
 	public function create_comment($id)
 	{
+		
+		$user_ip = $_SERVER['REMOTE_ADDR'];
+		if ($user_ip == '::1') { $user_ip = '127.0.0.1'; }		
+		
 		// is the commenter logged in?
 		if ( $this->ion_auth->logged_in() )
 		{
 			// yes
+			
+
+			
 			$data = [
 				'post_id' 		=> $id,
 				'user_id' 		=> $this->ion_auth->get_user_id(),
-				'author_ip' 	=> $_SERVER['REMOTE_ADDR'],
+				'author_ip' 	=> $user_ip,
 				'content' 		=> $this->input->post('comment'),
 				'date' 			=> date('Y-m-d H:i:d'),
 				'modded'		=> $this->config->item('mod_user_comments')
@@ -169,7 +176,7 @@ class Comments_m extends CI_Model
 				'post_id' 		=> $id,
 				'author' 		=> $this->input->post('nickname'),
 				'author_email' 	=> $this->input->post('email'),
-				'author_ip' 	=> $_SERVER['REMOTE_ADDR'],
+				'author_ip' 	=> $user_ip,
 				'content' 		=> $this->input->post('comment'),
 				'date' 			=> date('Y-m-d H:i:d'),
 				'modded'		=> $this->config->item('mod_non_user_comments')

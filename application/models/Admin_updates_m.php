@@ -54,7 +54,7 @@ class Admin_updates_m extends CI_Model
 		{
 			// load the curl lib
 			$this->load->library('curl');
-
+			
 			// we should get back something in json
 			if ($release_version = $this->curl->simple_get($this->update_url))
 			{
