@@ -9,15 +9,7 @@
  * used bootstrap panels, breadcrumbs and alerts; Changed way to show validation messages and also added some language variables 
  * @author       Simon Montaño
 */
-      // CHECKING SOFTWARE UPDATE STATUS 
-	  // REVISAR IMPLEMENTAR ESTO http://localhost/languageswitcher/es/alerts-notice/
-	  // http://learningphp.org/php/howto/How-to-use-CURL-in-PHP-CodeIgniter
-	  // http://developer-paradize.blogspot.com/2013/08/php-curl-functions-for-post-and-get.html
-	  // https://www.formget.com/curl-library-codeigniter/
-	  // https://gist.github.com/iwek/5117081
-      // $this->curl->post('http://addons.open-blog.org'
-	  // $release_version =  
-	  // if ($release_version === FALSE) {  else {	}	
+ 	
 ?>
          <div class="btn-group btn-breadcrumb">
             <a href="<?php echo site_url('admin'); ?>" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
